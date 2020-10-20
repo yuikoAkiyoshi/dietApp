@@ -1,8 +1,8 @@
 import { useReducer, useEffect, useState } from "react";
 import Router from "next/router";
 
-import AppContext from "../contexts/appContext";
-import Reducer from "../reducers/rootReducer";
+// import AppContext from "../contexts/appContext";
+// import Reducer from "../reducers/rootReducer";
 
 import Layout from "../components/myLayout.js";
 import NewTodo from "../components/newTodo.js";
@@ -13,7 +13,7 @@ const Index = ({ todos, totalPoint }) => {
     todo: "",
     point: 0,
   };
-  const [state, dispatch] = useReducer(Reducer, initialState);
+  // const [state, dispatch] = useReducer(Reducer, initialState);
   const [pointInstanceId, setPointInstanceId] = useState({});
   const [checked, setChecked] = useState({});
   const [initializeFinishedFlag, setInitializeFinishedFlag] = useState(false);
@@ -40,7 +40,7 @@ const Index = ({ todos, totalPoint }) => {
     }
   }
 
-  //SSRされた後に実行されるので、localstrageがないというエラーは起きないが、jsxのなかで変数が使えない。のでこの中でsetStateする
+  //SSRされた後に実行されるので、localStorageがないというエラーは起きないが、jsxのなかで変数が使えない。のでこの中でsetStateする
   useEffect(() => {
     //ポイントインスタンスのIDを配列に格納
     {
@@ -146,7 +146,7 @@ const Index = ({ todos, totalPoint }) => {
   }
 
   return (
-    <AppContext.Provider value={{ state, dispatch }}>
+    // <AppContext.Provider value={{ state, dispatch }}>
       <Layout>
         {initializeDOM}
         <NewTodo />
@@ -233,7 +233,7 @@ const Index = ({ todos, totalPoint }) => {
           }
         `}</style>
       </Layout>
-    </AppContext.Provider>
+    // </AppContext.Provider>
   );
 };
 
